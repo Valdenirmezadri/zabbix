@@ -389,26 +389,6 @@ Linux UDP services for fordiscovery by port
 ===
 import templates from file "zabbix_autodiscovery_linux.xml" (configuration->templates->import)
 
-cat << 'EOF' > /etc/zabbix/zabbix_agentd.conf.d/autodiscovery_linux.conf
-# disks stats
-UserParameter=custom.vfs.dev.read.ops[*],cat /proc/diskstats | grep "$1" | head -1 | awk '{print $$4}'
-UserParameter=custom.vfs.dev.read.ms[*],cat /proc/diskstats | grep "$1" | head -1 | awk '{print $$7}'
-UserParameter=custom.vfs.dev.write.ops[*],cat /proc/diskstats | grep "$1" | head -1 | awk '{print $$8}'
-UserParameter=custom.vfs.dev.write.ms[*],cat /proc/diskstats | grep "$1" | head -1 | awk '{print $$11}'
-UserParameter=custom.vfs.dev.io.active[*],cat /proc/diskstats | grep "$1" | head -1 | awk '{print $$12}'
-UserParameter=custom.vfs.dev.io.ms[*],cat /proc/diskstats | grep "$1" | head -1 | awk '{print $$13}'
-UserParameter=custom.vfs.dev.read.sectors[*],cat /proc/diskstats | grep "$1" | head -1 | awk '{print $$6}'
-UserParameter=custom.vfs.dev.write.sectors[*],cat /proc/diskstats | grep "$1" | head -1 | awk '{print $$10}'
-
-# autodiscovery scripts
-UserParameter=custom.disks.discovery_perl,/usr/bin/sudo /opt/zabbix/autodiscovery/discovery_disks.perl
-UserParameter=custom.proc.discovery_perl,/usr/bin/sudo /opt/zabbix/autodiscovery/discovery_processes.perl
-UserParameter=custom.services.tcp.discovery_perl,/usr/bin/sudo /opt/zabbix/autodiscovery/discovery_tcp_services.perl
-UserParameter=custom.services.udp.discovery_perl,/usr/bin/sudo /opt/zabbix/autodiscovery/discovery_udp_services.perl
-EOF
-
-service zabbix-agent stop
-service zabbix-agent start
 
 #test customs keys on the host :
 zabbix_get -s 127.0.0.1 -k custom.disks.discovery_perl
