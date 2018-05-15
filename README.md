@@ -366,6 +366,28 @@ Monitoring for SELinux service.
 Monitoring for Wowza Streaming Engine server
 
 ## Auto Discover
+# on zabbix server frontend :
+=============================
+create the regexps (in administration -> general -> regular expressions :)
+===
+Linux disks for autodiscovery
+1	» 	^(hd[a-z]+|sd[a-z]+|vd[a-z]+|dm-[0-9]+|drbd[0-9]+)$	[Result is TRUE]
+2	» 	^(vzsnap.*|.*-cow|.*-real|ram[0-9]+|loop[0-9]+|sr[0-9]*|fd[0-9]*)$	[Result is FALSE]
+Linux processes for autodiscovery
+1	» 	^(mimedefang|named|snmpd|snmptt|nfsd|syslogd|rsyslogd|syslog-ng|slapd|nmbd|inetd|cron|smbd|pvedaemon|ogSoapServ.pl|postgres|java)$	[Result is TRUE]
+Linux TCP services for fordiscovery by name
+1	» 	^$	[Result is FALSE]
+2	» 	^(rpc.*|proftpd.+)$	[Result is FALSE]
+Linux TCP services for fordiscovery by port
+1	» 	^(21|22|25|26|53|80|83|110|111|139|143|443|445|465|540|587|636|652|801|802|842|901|953|993|995|1100|1111|2049|3050|3142|3306|4190|5432|9101|9102|9103|10022|10023|10024|10025|22000|28081|28082|28083|28084|28085|28086|28087|28088|28089|28090|50000)$	[Result is TRUE]
+Linux UDP services for fordiscovery by name
+1	» 	^$	[Result is FALSE]
+2	» 	^(avahi-daemon:|named|snmpd|ntpdate|zabbix_server|smbd|rpc.*|rsyslogd|snmpwalk|proxpolicy\s.*)$	[Result is FALSE]
+Linux UDP services for fordiscovery by port
+1	» 	^(53|69|111|123|137|138|161|162|514|1812|1813|2049)$	[Result is TRUE]
+===
+import templates from file "zabbix_autodiscovery_linux.xml" (configuration->templates->import)
+
 cat << 'EOF' > /etc/zabbix/zabbix_agentd.conf.d/autodiscovery_linux.conf
 # disks stats
 UserParameter=custom.vfs.dev.read.ops[*],cat /proc/diskstats | grep "$1" | head -1 | awk '{print $$4}'
