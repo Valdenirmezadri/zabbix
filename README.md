@@ -368,8 +368,9 @@ Monitoring for Wowza Streaming Engine server
 ## Auto Discover
 # on zabbix server frontend :
 =============================
+
 create the regexps (in administration -> general -> regular expressions :)
-===
+
 Linux disks for autodiscovery
 1	» 	^(hd[a-z]+|sd[a-z]+|vd[a-z]+|dm-[0-9]+|drbd[0-9]+)$	[Result is TRUE]
 2	» 	^(vzsnap.*|.*-cow|.*-real|ram[0-9]+|loop[0-9]+|sr[0-9]*|fd[0-9]*)$	[Result is FALSE]
@@ -416,8 +417,8 @@ zabbix_get -s 127.0.0.1 -k custom.services.tcp.discovery_perl
 zabbix_get -s 127.0.0.1 -k custom.services.udp.discovery_perl
 
 # link the templates to the host in Zabbix :
-#  Template Linux disk autodiscovery
-#  Template Linux processes autodiscovery
-#  Template Linux services autodiscovery
-# wait 30mn for autodiscovery and then enjoy !
+Template Linux disk autodiscovery
+Template Linux processes autodiscovery
+Template Linux services autodiscovery
+wait 30mn for autodiscovery and then enjoy !
 
