@@ -1,5 +1,5 @@
-cat /etc/redhat-release |grep 6 && test $? && rpm -Uvh http://repo.zabbix.com/zabbix/3.4/rhel/6/x86_64/zabbix-release-3.4-1.el6.noarch.rpm || echo 'não é CentOS 6' ;
-cat /etc/redhat-release |grep 7 && test $? && rpm -Uvh http://repo.zabbix.com/zabbix/3.4/rhel/7/x86_64/zabbix-release-3.4-2.el7.noarch.rpm || echo 'não é CentOS 7'
+cat /etc/redhat-release |grep 6 && test $? && rpm -Uvh http://repo.zabbix.com/zabbix/3.4/rhel/6/x86_64/zabbix-release-3.4-1.el6.noarch.rpm || echo 'não é CentOS 6';
+cat /etc/redhat-release |grep 7 && test $? && rpm -Uvh http://repo.zabbix.com/zabbix/3.4/rhel/7/x86_64/zabbix-release-3.4-2.el7.noarch.rpm || echo 'não é CentOS 7'; 
 yum install zabbix zabbix-agent -y &&
 cd /tmp/ &&
 git clone https://github.com/Valdenirmezadri/zabbix &&
