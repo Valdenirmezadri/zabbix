@@ -51,8 +51,10 @@ if [ -n "$1" ]; then
 fi
  
 if [ -z "$hosts" ]; then
-  hosts=$(netstat -tn | awk '$4 ~ /[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/ && $4 !~ /127.0.0/ {gsub(/:[0-9]+/,"",$4);} END{print$4}')
+#  hosts=$(ifconfig|grep 'inet end'| awk '{print $3}'| egrep -v '^(192\.168|10\.|172\.1[6789]\.|172\.2[0-9]\.|172\.3[01]\.|^127.)')
+  hosts=$(netstat -tn | awk '$4 ~ /[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/ && $4 !~ /^(192\.168|10\.|172\.1[6789]\.|172\.2[0-9]\.|172\.3[01]\.|^127.)/ {print$4}'| sed 's/:.*//'| sort| uniq)
 fi
+
  
 for host in $hosts; do
   HostToIP
