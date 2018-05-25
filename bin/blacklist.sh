@@ -4,8 +4,7 @@
 # Usage: blacklist.sh DOMAIN  
  
 # IPs or hostnames to check if none provided as arguments to the script
-hosts='
-'
+hosts=''
  
 # Locally maintained list of DNSBLs to check
 LocalList='
