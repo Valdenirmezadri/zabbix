@@ -7,9 +7,7 @@
 hosts=''
  
 # Locally maintained list of DNSBLs to check
-LocalList='
-b.barracudacentral.org
-'
+LocalList=''
  
 # pipe delimited exclude list for remote lists
 Exclude='spamtrap.drbl.drand.net|dnsbl.proxybl.org|^dnsbl.mailer.mobi$|^foo.bar$|^bar.baz$|^.*webiron.*$'
