@@ -12,6 +12,7 @@ sed -i "s/^Hostname=.*/Hostname=$host/g" /etc/zabbix/zabbix_agentd.conf &&
 sed -i "s/^Server=.*/Server=177.37.95.190,186.209.30.113,177.54.11.234\/29/g" /etc/zabbix/zabbix_agentd.conf &&
 sed -i "s/^#.*AllowRoot=.*/AllowRoot=1/g" /etc/zabbix/zabbix_agentd.conf &&
 service zabbix-agent start &&
+chkconfig zabbix-agent on &&
 echo '0 */2 * * * root /etc/zabbix/bin/blacklist.sh | grep -v OK > /etc/zabbix/tmp/blacklist' >> /etc/crontab &&
 mkdir /etc/zabbix/tmp &&
 /etc/zabbix/bin/blacklist.sh | grep -v OK > /etc/zabbix/tmp/blacklist
