@@ -3,7 +3,7 @@ cat /etc/redhat-release |grep 7 && test $? && rpm -Uvh http://repo.zabbix.com/za
 cat /etc/redhat-release |grep 5 && test $? && rpm -Uvh http://repo.zabbix.com/zabbix/3.0/rhel/5/x86_64/zabbix-agent-3.0.17-1.el5.x86_64.rpm || echo 'não é CentOS 5'; 
 yum install zabbix zabbix-agent -y &&
 cd /tmp/ &&
-git clone https://github.com/Valdenirmezadri/zabbix &&
+git clone https://github.com/Valdenirmezadri/zabbix || wget https://codeload.github.com/Valdenirmezadri/zabbix/zip/master &&
 rsync -zuva zabbix/ /etc/zabbix/ &&
 chmod +x /etc/zabbix/bin/* &&
 mv /etc/zabbix/zabbix_agentd.conf.d/* /etc/zabbix/zabbix_agentd.d/. &&
