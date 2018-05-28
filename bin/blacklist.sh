@@ -7,7 +7,50 @@
 hosts=''
  
 # Locally maintained list of DNSBLs to check
-LocalList=''
+LocalList='
+truncate.gbudb.net
+dnsbl.sorbs.net
+safe.dnsbl.sorbs.net
+http.dnsbl.sorbs.net
+socks.dnsbl.sorbs.net
+misc.dnsbl.sorbs.net
+smtp.dnsbl.sorbs.net
+web.dnsbl.sorbs.net
+new.spam.dnsbl.sorbs.net
+recent.spam.dnsbl.sorbs.net
+old.spam.dnsbl.sorbs.net
+spam.dnsbl.sorbs.net
+escalations.dnsbl.sorbs.net
+block.dnsbl.sorbs.net
+zombie.dnsbl.sorbs.net
+dul.dnsbl.sorbs.net
+noservers.dnsbl.sorbs.net
+rhsbl.sorbs.net
+badconf.rhsbl.sorbs.net
+nomail.rhsbl.sorbs.net
+sbl.spamhaus.org
+xbl.spamhaus.org
+pbl.spamhaus.org
+zen.spamhaus.org
+dnsrbl.org
+db.wpbl.info
+bad.psky.me
+bl.spamcop.net
+noptr.spamrats.com
+dyna.spamrats.com
+spam.spamrats.com
+auth.spamrats.com
+bl.spamcannibal.org
+ix.dnsbl.manitu.net
+dnsbl.inps.de
+bl.blocklist.de
+srnblack.surgate.net
+rbl.megarbl.net
+rbl.realtimeblacklist.com
+b.barracudacentral.org
+dnsbl.spfbl.net
+ubl.unsubscore.com
+'
  
 # pipe delimited exclude list for remote lists
 Exclude='spamtrap.drbl.drand.net|dnsbl.proxybl.org|^dnsbl.mailer.mobi$|^foo.bar$|^bar.baz$|^.*webiron.*$'
